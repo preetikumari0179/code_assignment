@@ -2,10 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RegisterComponent } from './register.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
-import {HttpClient} from "@angular/common/http";
-import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
-import {HttpLoaderFactory} from "../../app.module";
+import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
+import {HttpClient} from '@angular/common/http';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {HttpLoaderFactory} from '../../app.module';
 
 const TRANSLATIONS_EN = require('../../../assets/i18n/en.json');
 describe('RegisterComponent', () => {
@@ -17,7 +17,7 @@ describe('RegisterComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ RegisterComponent ],
-      imports: [ RouterTestingModule, ReactiveFormsModule,HttpClientTestingModule,
+      imports: [ RouterTestingModule, ReactiveFormsModule, HttpClientTestingModule,
         TranslateModule.forRoot({
         loader: {
           provide: TranslateLoader,

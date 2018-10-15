@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { RegisterComponent } from '../components/registers/register.component';
+import { RegisterComponent } from '../components/register/register.component';
 import { HomeComponent } from '../components/home/home.component';
 import { AppComponent } from '../app.component';
 import { RegisterFlowGuard, HomeFlowGuard} from '../guards/flow.guard';

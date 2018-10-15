@@ -10,7 +10,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // import All Component
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './components/registers/register.component';
+import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 
 // import route page
