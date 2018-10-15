@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <script src="./temp-trackers.js"></script>
+  </head>
+<body>
+<h2>Temp Tracker</h2>
+<section class='section-custom'>
+  <br>
+   <!-- div of input Block Start Here -->
+    <div>
+      <label for="temp">Temp in celcius:</label>
+      <input type="number" placeholder="Temp" id="temp" min="0" max="150">
+      <h5><span id='errorMsg'></span></h5>
+    </div>
+    <!-- End -->
+    <!-- Button Block Start Here -->
+    <div>
+      <button id="insert" onclick="tracker.insert()">Insert Temp</button>
+      <button onclick="tracker.show_result('TEMPLIST')">Temp List</button>
+      <button onclick="tracker.show_result('MAXTEMP')">Max Temp</button>
+      <button onclick="tracker.show_result('MINTEMP')">Min Temp</button>
+      <button onclick="tracker.show_result('MEANTEMP')">Mean Temp</button>
+      <button onclick="tracker.show_result('MODETEMP')">Mode Temp</button>
+    </div>
+    <!-- Button Block End -->
+    <h4><span id='responseMsg'></span></h4>
+</section>
+</body>
+</html>
