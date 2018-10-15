@@ -1,0 +1,63 @@
+ <div>
+   <br>
+  <!-- Form Start -->
+  <form [formGroup]="signUp" (ngSubmit)="submitSignUp()">
+    <div>
+      <!-- First Name Start-->
+      <div class="form-group">
+        <label for="firstName" [class.input-focus]="signUp.get('firstName').value.length">{{ 'register.firstName' | translate }}</label>
+        <input class="form-control" #firstName formControlName="firstName" name="firstName" type="text" value="" maxlength="128"/>
+      </div>
+      <div *ngIf="signUp.controls['firstName'].errors && !signUp.controls['firstName'].pristine" class="error-msgr">
+        <div [ngSwitch]="obj(signUp.controls['firstName'].errors)[0]">
+          <div *ngSwitchCase="'required'">{{ 'register.FIRST_NAME_REQUIRED' | translate  }}</div>
+          <div *ngSwitchCase="'minlength'">{{ 'register.FIRST_NAME_MINLENGTH' | translate  }}</div>
+          <div *ngSwitchCase="'pattern'">{{ 'register.FIRST_NAME_PATTERN' | translate  }}</div>
+        </div>
+      </div>
+      <!-- First Name End -->
+      <!-- Last Name Start-->
+      <div class="form-group">
+        <label for="lastName" [class.input-focus]="signUp.get('lastName').value.length">{{ 'register.lastName' | translate }}</label>
+        <input class="form-control" #lastName formControlName="lastName" name="lastName" type="text" value="" maxlength="128"/>
+      </div>
+      <div *ngIf="signUp.controls['lastName'].errors && !signUp.controls['lastName'].pristine" class="error-msgr">
+        <div [ngSwitch]="obj(signUp.controls['lastName'].errors)[0]">
+          <div *ngSwitchCase="'required'">{{ 'register.LAST_NAME_REQUIRED' | translate  }}</div>
+          <div *ngSwitchCase="'minlength'">{{ 'register.LAST_NAME_MINLENGTH' | translate  }}</div>
+          <div *ngSwitchCase="'pattern'">{{ 'register.LAST_NAME_PATTERN' | translate  }}</div>
+        </div>
+      </div>
+      <!-- Last Name End -->
+      <!-- Phome Number Start-->
+      <div class="form-group">
+        <label for="phoneNumber" [class.input-focus]="signUp.get('phoneNumber').value.length">{{ 'register.phoneNumber' | translate }}</label>
+        <input class="form-control" #phoneNumber type="text" formControlName="phoneNumber" name="phoneNumber" maxlength="10 " />
+      </div>
+      <div *ngIf="signUp.controls['phoneNumber'].errors && !signUp.controls['phoneNumber'].pristine" class="error-msgr">
+        <div [ngSwitch]="obj(signUp.controls['phoneNumber'].errors)[0]">
+          <div *ngSwitchCase="'required'">{{ 'register.PHONE_NO_REQUIRED' | translate  }}</div>
+          <div *ngSwitchCase="'pattern'">{{ 'register.PHONE_NO_PATTERN' | translate  }}</div>
+        </div>
+      </div>
+      <!-- Phome Number End -->
+      <!-- Country List Start-->
+      <label for="country">{{ 'register.country' | translate }}</label>
+        <select formControlName="country" id="country">
+          <option *ngFor="let countryName of countryList" [ngValue]="countryName">{{countryName}}</option>
+        </select>
+        <div *ngIf="signUp.controls['country'].errors && !signUp.controls['country'].pristine" class="error-msgr">
+          <div [ngSwitch]="obj(signUp.controls['phoneNumber'].errors)[0]">
+            <div *ngSwitchCase="'required'">{{ 'register.COUNTRY_REQUIRED' | translate  }}</div>
+          </div>
+        </div>
+      <!-- Country List End -->
+      <!-- Submit Button Start -->
+      <div>
+        <input type="submit" name=" " value="{{ 'register.submit' | translate }}" [disabled]="signUp.invalid" />
+      </div>
+      <!-- Submit Button End -->
+    </div>
+  </form>
+  <!-- Form End -->
+</div>
