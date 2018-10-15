@@ -2,23 +2,42 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RegisterComponent } from './register.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
+import {HttpClient} from "@angular/common/http";
+import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
+import {HttpLoaderFactory} from "../../app.module";
 
-
+const TRANSLATIONS_EN = require('../../../assets/i18n/en.json');
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
+  let translate: TranslateService;
+  let http: HttpTestingController;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ RegisterComponent ],
-      imports: [ RouterTestingModule, ReactiveFormsModule, TranslateModule.forRoot() ],
+      imports: [ RouterTestingModule, ReactiveFormsModule,HttpClientTestingModule,
+        TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+        }
+      }) ],
+      providers: [TranslateService],
     })
     .compileComponents();
+    translate = TestBed.get(TranslateService);
+    http = TestBed.get(HttpTestingController);
   }));
 
   beforeEach(() => {
+    spyOn(translate, 'getBrowserLang').and.returnValue('en');
     fixture = TestBed.createComponent(RegisterComponent);
+    translate.setTranslation('en', TRANSLATIONS_EN);
+    translate.use('en');
+    // http.expectOne(`/assets/i18n/en.json`).flush(TRANSLATIONS_EN);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
