@@ -9,6 +9,7 @@
     var stringSecond = document.getElementById('stringTwo').value;
     document.getElementById('responseMsg').innerHTML  = `Is Anagram:  ${is_anagram(stringFirst, stringSecond)}`;
   };
+
   /**
    * @method is_anagram()
    * @param string1: fisrt input string
